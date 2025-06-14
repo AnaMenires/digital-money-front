@@ -10,16 +10,17 @@ import { TransactionProvider } from "./contexts/TransactionContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    
-    <TransactionProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/transactions" element={<TransactionsPage />} />
-          <Route path="/transactions/:id" element={<TransactionDetails />} />
-        </Routes>
-      </BrowserRouter>
-    </TransactionProvider>
+    <BrowserRouter>
+      <TransactionProvider>
+        
+          <Routes>
+            <Route path="/" element={<LoginPage />} />
+            <Route path="/transactions" element={<TransactionsPage />} />
+            <Route path="/transactions/:id" element={<TransactionDetails />} />
+          </Routes>
+        
+      </TransactionProvider>
+    </BrowserRouter>
 
     <ToastContainer />
   </StrictMode>

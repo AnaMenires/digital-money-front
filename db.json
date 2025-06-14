@@ -1,19 +1,11 @@
 {
   "transactions": [
     {
-      "title": "Netflix",
-      "price": 55.9,
-      "category": "Entretenimento",
-      "transactionType": "withdraw",
-      "date": "07/06/2025",
-      "id": "1"
-    },
-    {
       "title": "PAGAMENTO DAS FERIAS",
       "price": 21000,
       "category": "FINANCAS",
       "transactionType": "deposit",
-      "date": "07/06/2025",
+      "date": "14/06/2025",
       "id": "5cce"
     },
     {
