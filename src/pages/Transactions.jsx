@@ -5,10 +5,18 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header/Header";
+import { useTransactionContext } from "../contexts/TransactionContext";
 
 function TransactionsPage() {
   const [allTransactions, setAllTransactions] = useState([]);
   const [open, setOpen] = useState(false);
+
+  const { incrementTransactionCount } = useTransactionContext();
+
+  useEffect(() => {
+    incrementTransactionCount();
+  }, [])
+  console.log(incrementTransactionCount);
 
   const navigate = useNavigate();
 
@@ -17,15 +25,15 @@ function TransactionsPage() {
   }
 
   console.log(allTransactions);
-
   async function fetchTransactions() {
     const transactions = await axios.get("http://localhost:3000/transactions");
+
     setAllTransactions(transactions.data);
   }
 
   function handleOpenModal() {
-  setOpen(true);
-}
+    setOpen(true);
+  }
 
   useEffect(() => {
     fetchTransactions();
@@ -33,27 +41,26 @@ function TransactionsPage() {
 
   const depositsResult = allTransactions.reduce((prev, current) => {
     if (current.transactionType === "deposit") {
-      return prev + Number(current.price);
+      return prev + current.price;
     }
+
     return prev;
   }, 0);
 
   const withdrawsResult = allTransactions.reduce((prev, current) => {
     if (current.transactionType === "withdraw") {
-      return prev + Number(current.price);
+      return prev + current.price;
     }
+
     return prev;
   }, 0);
 
   const total = depositsResult - withdrawsResult;
 
   console.log(withdrawsResult);
-
   return (
     <div className="min-h-screen flex flex-col bg-gray-100">
-
       <Header handleOpenModal={handleOpenModal} />
-
       <main className="flex-1 container mx-auto px-6 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 -mt-24">
           <CardTransaction
@@ -89,28 +96,28 @@ function TransactionsPage() {
                 <th className="px-6 py-3 pb-4 font-medium">Data</th>
               </tr>
             </thead>
-
             <tbody className="divide-y divide-gray-100">
-              {allTransactions.map((transaction, index) => (
-                <tr
-                  className="hover:bg-gray-50 bg-white"
-                  key={index}
-                  onClick={() => handleEditTransaction(transaction.id)}>
-                  <td className="px-6 py-4">{transaction.title}</td>
-
-                  <td className="px-6 py-4 text-green-500 font-medium">
-                    {transaction.price != null
-                      ? Number(transaction.price).toLocaleString("pt-BR", {
-                          style: "currency",
-                          currency: "BRL",
-                        })
-                      : ""}
-                  </td>
-
-                  <td className="px-6 py-4">{transaction.category}</td>
-                  <td className="px-6 py-4">{transaction.date}</td>
-                </tr>
-              ))}
+              {allTransactions.map((transaction, index) => {
+                return (
+                  <tr
+                    className="hover:bg-gray-50 bg-white"
+                    key={index}
+                    onClick={() => {
+                      handleEditTransaction(transaction.id);
+                    }}
+                  >
+                    <td className="px-6 py-4">{transaction.title}</td>
+                    <td className="px-6 py-4 text-green-500 font-medium">
+                      {transaction.price.toLocaleString("pt-BR", {
+                        style: "currency",
+                        currency: "BRL",
+                      })}
+                    </td>
+                    <td className="px-6 py-4">{transaction.category}</td>
+                    <td className="px-6 py-4">{transaction.date}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>

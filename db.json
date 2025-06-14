@@ -1,28 +1,28 @@
 {
   "transactions": [
     {
-      "id": "1",
       "title": "Netflix",
       "price": 55.9,
-      "transactionType": "withdraw",
       "category": "Entretenimento",
-      "date": "17/05/2025"
+      "transactionType": "withdraw",
+      "date": "07/06/2025",
+      "id": "1"
     },
     {
-      "id": "5cce",
-      "title": "Salario",
-      "price": 12000,
-      "category": "Salario",
+      "title": "PAGAMENTO DAS FERIAS",
+      "price": 21000,
+      "category": "FINANCAS",
       "transactionType": "deposit",
-      "date": "17/05/2025"
+      "date": "07/06/2025",
+      "id": "5cce"
     },
     {
-      "id": "fbea",
       "title": "Prime Video",
       "price": 20,
       "category": "Entretenimento",
       "transactionType": "withdraw",
-      "date": "17/05/2025"
+      "date": "07/06/2025",
+      "id": "fbea"
     },
     {
       "id": "950a",
@@ -33,40 +33,28 @@
       "date": "17/05/2025"
     },
     {
-      "id": "e01f",
-      "title": "kfshakjdf",
-      "price": 50,
-      "category": "fasjfg",
+      "title": "Café em barras de ouro",
+      "price": 908,
+      "category": "Alimentacao",
+      "transactionType": "withdraw",
+      "date": "07/06/2025",
+      "id": "8bca"
+    },
+    {
+      "id": "5b39",
+      "title": "Aumento de salario",
+      "price": 1200,
+      "category": "Salario",
       "transactionType": "deposit",
       "date": "31/05/2025"
     },
     {
-      "id": "4765"
-    },
-    {
-      "id": "df8e"
-    },
-    {
-      "id": "0c73"
-    },
-    {
-      "id": "4453"
-    },
-    {
-      "id": "4904",
-      "title": "Curso",
-      "price": 365,
-      "category": "Educação",
-      "transactionType": "withdraw",
-      "date": "31/05/2025"
-    },
-    {
-      "id": "da21",
-      "title": "",
-      "price": 0,
-      "category": "",
-      "transactionType": "",
-      "date": "31/05/2025"
+      "id": "c644",
+      "title": "Decimo terceiro",
+      "price": 9000,
+      "category": "Financa",
+      "transactionType": "deposit",
+      "date": "02/06/2025"
     }
   ]
 }
